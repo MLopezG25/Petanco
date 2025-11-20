@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://dmlbqdh7dqe1e"]
+
+[ext_resource type="AudioStream" uid="uid://xqmwm3r41vaw" path="res://Sonidos/Brown Noise (1).mp3" id="1_2n1pq"]
+[ext_resource type="Script" uid="uid://bgr1obg8vp37e" path="res://Scripts/lluvia.gd" id="1_a5il0"]
+
+[sub_resource type="Curve" id="Curve_408tv"]
+_data = [Vector2(0, 0), 0.0, 0.8252813, 0, 0, Vector2(0.6637168, 1), 2.031462, 2.031462, 0, 0, Vector2(0.95575225, 0.011235952), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_t37sq"]
+curve = SubResource("Curve_408tv")
+
+[sub_resource type="Gradient" id="Gradient_2n1pq"]
+colors = PackedColorArray(1, 1, 1, 0.078431375, 1, 1, 1, 0.78039217)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ac4sl"]
+gradient = SubResource("Gradient_2n1pq")
+
+[sub_resource type="Curve" id="Curve_a5il0"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_flu7g"]
+_limits = [0.0, 30.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 8.764046), 0.0, 0.0, 0, 0, Vector2(0.2522124, 30), 0.0, 0.0, 0, 0, Vector2(0.99999, 30), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_dm7ce"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_pdhbu"]
+curve_x = SubResource("Curve_a5il0")
+curve_y = SubResource("Curve_flu7g")
+curve_z = SubResource("Curve_dm7ce")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6ciyq"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(0, 100, 0)
+spread = 0.0
+initial_velocity_min = 637.75
+initial_velocity_max = 663.62
+scale_min = 0.19999999
+scale_max = 2.2
+scale_over_velocity_curve = SubResource("CurveXYZTexture_pdhbu")
+color_initial_ramp = SubResource("GradientTexture1D_ac4sl")
+alpha_curve = SubResource("CurveTexture_t37sq")
+anim_speed_max = 16.0
+turbulence_noise_scale = 3.075
+collision_use_scale = true
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_408tv"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="Lluvia" type="Area2D"]
+script = ExtResource("1_a5il0")
+
+[node name="Lluvia" type="GPUParticles2D" parent="."]
+rotation = 1.5707964
+scale = Vector2(1.682685, 3.3943279)
+amount = 200
+randomness = 1.0
+trail_sections = 2
+trail_section_subdivisions = 1
+process_material = SubResource("ParticleProcessMaterial_6ciyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+material = SubResource("CanvasItemMaterial_408tv")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_2n1pq")
+autoplay = true
+bus = &"Lluvia"
+parameters/looping = false

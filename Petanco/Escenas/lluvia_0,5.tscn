@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://gxnif5nw6j1a"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_408tv"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(30, 0, 0)
+gravity = Vector3(0, 400, 0)
+
+[node name="Lluvia0,5" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 100
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_408tv")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+physics_interpolation_mode = 1
+visible = false
+amount = 1
+emission_shape = 3
+emission_rect_extents = Vector2(30, 0)
+spread = 0.0

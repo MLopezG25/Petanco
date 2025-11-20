@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwjx0hrdcjlfo"]
+
+[ext_resource type="Script" uid="uid://1p5iv4qqy860" path="res://Scripts/main.gd" id="1_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://d3wbe6mtx5t6v" path="res://Escenas/player.tscn" id="1_glv2v"]
+[ext_resource type="AudioStream" uid="uid://l4c6mgqsrdr" path="res://Sonidos/file_example_MP3_700KB.mp3" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://cugfejv6pnkpl" path="res://Escenas/line_object.tscn" id="4_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://dmlbqdh7dqe1e" path="res://Escenas/lluvia.tscn" id="6_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://evqgubpio2x" path="res://Escenas/slingshot.tscn" id="6_lgr22"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fos0i"]
+size = Vector2(100, 100)
+
+[sub_resource type="Environment" id="Environment_fos0i"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 1.0
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_cm0pq")
+
+[node name="LineContainer" type="Node2D" parent="."]
+
+[node name="LineObject" parent="LineContainer" instance=ExtResource("4_cm0pq")]
+
+[node name="CollisionContainer" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CollisionContainer"]
+
+[node name="SlingContainer" type="Node2D" parent="."]
+
+[node name="Slingshot" parent="SlingContainer" instance=ExtResource("6_lgr22")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_uu6xs")
+volume_db = -4.862
+pitch_scale = 1.4
+max_distance = 99999.0
+
+[node name="Player" parent="." instance=ExtResource("1_glv2v")]
+modulate = Color(1, 0.826, 0.42000002, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.3, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1, 1)
+texture = SubResource("PlaceholderTexture2D_fos0i")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fos0i")
+
+[node name="Lluvia" parent="." instance=ExtResource("6_3dxm6")]

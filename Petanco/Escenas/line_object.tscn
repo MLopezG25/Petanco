@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cugfejv6pnkpl"]
+
+[ext_resource type="Script" uid="uid://dxb10bf5n36w5" path="res://Scripts/line_object.gd" id="1_kkfds"]
+[ext_resource type="Shader" uid="uid://dq40g6msnb14c" path="res://Shaders/line_heat.gdshader" id="1_kteot"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kteot"]
+shader = ExtResource("1_kteot")
+shader_parameter/age = 0.0
+
+[sub_resource type="Gradient" id="Gradient_kkfds"]
+offsets = PackedFloat32Array(0, 0.8333333)
+colors = PackedColorArray(1, 1, 1, 0, 18.892157, 18.892157, 18.892157, 1)
+
+[node name="LineObject" type="Node2D"]
+script = ExtResource("1_kkfds")
+
+[node name="Line2D" type="Line2D" parent="."]
+material = SubResource("ShaderMaterial_kteot")
+width = 8.0
+gradient = SubResource("Gradient_kkfds")
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 32
+antialiased = true
