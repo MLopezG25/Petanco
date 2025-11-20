@@ -1,2 +1,2 @@
 # Petanco
-Godot game project
+Juego de Godot
