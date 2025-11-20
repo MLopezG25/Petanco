@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cugfejv6pnkpl"]
+
+[ext_resource type="Script" uid="uid://dxb10bf5n36w5" path="res://line_object.gd" id="1_kkfds"]
+
+[sub_resource type="Gradient" id="Gradient_kkfds"]
+offsets = PackedFloat32Array(0, 0.8333333)
+colors = PackedColorArray(1, 1, 1, 0, 18.892157, 18.892157, 18.892157, 1)
+
+[node name="LineObject" type="Node2D"]
+script = ExtResource("1_kkfds")
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 8.0
+gradient = SubResource("Gradient_kkfds")
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 32
+antialiased = true
