@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3wbe6mtx5t6v"]
+
+[ext_resource type="Script" uid="uid://b73454ygwtuwn" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://bidfxyp6gkkm2" path="res://fuego.tscn" id="2_onrkg"]
+[ext_resource type="PackedScene" uid="uid://b23war43ggmhi" path="res://explosion.tscn" id="3_i3pqv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sh265"]
+bounce = 0.4
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sh265"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_sh265")
+continuous_cd = 1
+linear_damp = 0.1
+angular_damp = 0.1
+script = ExtResource("1_4flbx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, -0.5)
+scale = Vector2(0.036, 0.036)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sh265")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.8, 0.8)
+position_smoothing_enabled = true
+position_smoothing_speed = 60.0
+
+[node name="Fuego" parent="." instance=ExtResource("2_onrkg")]
+
+[node name="Explosion" parent="." instance=ExtResource("3_i3pqv")]

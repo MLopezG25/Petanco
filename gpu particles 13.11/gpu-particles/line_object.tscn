@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cugfejv6pnkpl"]
+
+[ext_resource type="Script" uid="uid://dxb10bf5n36w5" path="res://line_object.gd" id="1_kkfds"]
+
+[node name="LineObject" type="Node2D"]
+script = ExtResource("1_kkfds")
+
+[node name="Line2D" type="Line2D" parent="."]

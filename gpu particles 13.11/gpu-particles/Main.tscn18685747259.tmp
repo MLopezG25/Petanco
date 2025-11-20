@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwjx0hrdcjlfo"]
+
+[ext_resource type="PackedScene" uid="uid://d3wbe6mtx5t6v" path="res://player.tscn" id="1_glv2v"]
+[ext_resource type="AudioStream" uid="uid://l4c6mgqsrdr" path="res://file_example_MP3_700KB.mp3" id="2_uu6xs"]
+[ext_resource type="Script" uid="uid://vjhfrhefhjbw" path="res://camera_2d.gd" id="3_r0du0"]
+
+[sub_resource type="GDScript" id="GDScript_uu6xs"]
+resource_name = "Main"
+script/source = "extends Node2D
+
+@onready var line_container: Node2D = $LineContainer
+@onready var collision_container: Node2D = $CollisionContainer
+@onready var player: RigidBody2D = $Player
+
+var current_line: Node = null
+var sling_line: Line2D = null
+var min_point_distance: float = 1.0
+
+var LineObjectScene = preload(\"res://LineObject.tscn\")
+
+func _unhandled_input(event: InputEvent) -> void:
+	# Dibujar líneas normales con click izquierdo
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			_start_line()
+			current_line.add_point(_world_mouse())
+		else:
+			_finish_line()
+	elif event is InputEventMouseMotion and current_line:
+		var p := _world_mouse()
+		if current_line.is_empty() or current_line.last_point().distance_to(p) >= min_point_distance:
+			current_line.add_point(p)
+
+	# Tirachinas con click derecho
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.pressed:
+			_start_sling()
+		else:
+			_release_sling()
+	elif event is InputEventMouseMotion and sling_line:
+		_update_sling(_world_mouse())
+
+# -------------------
+# LÍNEAS NORMALES
+# -------------------
+func _start_line() -> void:
+	current_line = LineObjectScene.instantiate()
+	line_container.add_child(current_line)
+
+func _finish_line() -> void:
+	if current_line:
+		current_line.finalize(collision_container)
+	current_line = null
+
+# -------------------
+# MECÁNICA TIRACHINAS
+# -------------------
+func _start_sling() -> void:
+	sling_line = Line2D.new()
+	sling_line.width = 2
+	sling_line.default_color = Color.RED
+	sling_line.add_point(player.global_position)
+	sling_line.add_point(_world_mouse())
+	line_container.add_child(sling_line)
+
+func _update_sling(mouse_pos: Vector2) -> void:
+	sling_line.set_point_position(0, player.global_position)
+	sling_line.set_point_position(1, mouse_pos)
+
+func _release_sling() -> void:
+	if sling_line:
+		var mouse_pos = sling_line.get_point_position(1)
+		var dir = player.global_position - mouse_pos
+		var strength = clamp(dir.length() * 5, 0, 2000)
+		player.apply_central_impulse(dir.normalized() * strength)
+		sling_line.queue_free()
+		sling_line = null
+
+# -------------------
+func _world_mouse() -> Vector2:
+	return get_viewport().get_camera_2d().get_global_mouse_position()
+"
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_uu6xs")
+
+[node name="LineContainer" type="Node2D" parent="."]
+
+[node name="CollisionContainer" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_glv2v")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_uu6xs")
+volume_db = -4.862
+pitch_scale = 1.4
+max_distance = 99999.0
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("3_r0du0")
+player = NodePath("../Player")

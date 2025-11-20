@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bidfxyp6gkkm2"]
+
+[sub_resource type="GDScript" id="GDScript_mioft"]
+script/source = "extends Node2D
+
+@onready var explosion: CPUParticles2D = $CPUParticles2D
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"ui_accept\"): # espacio
+		explosion.restart()   # reinicia el sistema de partículas
+		explosion.emitting = true
+"
+
+[sub_resource type="Curve" id="Curve_mioft"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.33073938), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_0drri"]
+offsets = PackedFloat32Array(0, 0.2685185, 0.4537037, 0.5740741, 1)
+colors = PackedColorArray(1, 0.37700003, 0.110000014, 1, 1, 0.5401667, 0.110000014, 1, 1, 0.79200006, 0.22000003, 1, 0.67, 0.56280005, 0.26799998, 0.27450982, 1, 1, 1, 0)
+
+[node name="Fuego" type="Node2D"]
+script = SubResource("GDScript_mioft")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 8000
+lifetime = 0.5
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, -980)
+radial_accel_min = -50.0
+radial_accel_max = -40.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_mioft")
+color_ramp = SubResource("Gradient_0drri")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
