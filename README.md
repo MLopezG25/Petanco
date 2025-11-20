@@ -1,0 +1,2 @@
+# Petanco
+Godot game project
