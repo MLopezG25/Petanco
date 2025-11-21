@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d10bevgo02y3w"
+path="res://.godot/imported/break lofi.ogg-af08d8559b03c4c5c30bd17b10762fa2.oggvorbisstr"
+
+[deps]
+
+source_file="res://Música/break lofi.ogg"
+dest_files=["res://.godot/imported/break lofi.ogg-af08d8559b03c4c5c30bd17b10762fa2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cdccwhag2d0p3"
+path="res://.godot/imported/Con bajo.ogg-7a2fe2be4598b6f9b6b6556abc17392a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Música/Con bajo.ogg"
+dest_files=["res://.godot/imported/Con bajo.ogg-7a2fe2be4598b6f9b6b6556abc17392a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

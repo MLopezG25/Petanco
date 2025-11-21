@@ -26,9 +26,3 @@ shape = SubResource("CircleShape2D_sh265")
 [node name="Fuego" parent="." instance=ExtResource("2_onrkg")]
 
 [node name="Explosion" parent="." instance=ExtResource("3_i3pqv")]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="VelocidadLabel" type="Label" parent="CanvasLayer"]
-offset_right = 205.0
-offset_bottom = 116.0

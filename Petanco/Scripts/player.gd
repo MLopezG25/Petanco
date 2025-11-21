@@ -1,16 +1,10 @@
 extends RigidBody2D
 @export var max_speed: float = 3000.0
-@onready var velocidad_label: Label = $CanvasLayer/VelocidadLabel #velocidad en pantallaa
 @onready var explosion_particles: CPUParticles2D = $CPUParticles2D
 var exploded: bool = false
 
 func _physics_process(delta: float) -> void:
-	_update_velocity_text()
 	_limit_velocity()
-	
-func _update_velocity_text() -> void:
-	var velocidad_actual = linear_velocity.length()
-	velocidad_label.text = "Velocidad: " + str(round(velocidad_actual))
 
 func _limit_velocity() -> void:
 	if linear_velocity.length() > max_speed:

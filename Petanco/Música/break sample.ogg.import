@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c31bt77a3jome"
+path="res://.godot/imported/break sample.ogg-ba621b427f34890aadc7a87381694484.oggvorbisstr"
+
+[deps]
+
+source_file="res://Música/break sample.ogg"
+dest_files=["res://.godot/imported/break sample.ogg-ba621b427f34890aadc7a87381694484.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
