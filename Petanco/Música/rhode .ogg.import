@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bacit7a3cp6h3"
+path="res://.godot/imported/rhode .ogg-1e2f6cecbe464cb96edf04e7b1427fe1.oggvorbisstr"
+
+[deps]
+
+source_file="res://Música/rhode .ogg"
+dest_files=["res://.godot/imported/rhode .ogg-1e2f6cecbe464cb96edf04e7b1427fe1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

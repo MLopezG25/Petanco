@@ -12,11 +12,3 @@ gravity = Vector3(0, 400, 0)
 amount = 100
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_408tv")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-physics_interpolation_mode = 1
-visible = false
-amount = 1
-emission_shape = 3
-emission_rect_extents = Vector2(30, 0)
-spread = 0.0

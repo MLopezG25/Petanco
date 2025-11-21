@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cugfejv6pnkpl"]
+[gd_scene load_steps=7 format=3 uid="uid://cugfejv6pnkpl"]
 
 [ext_resource type="Script" uid="uid://dxb10bf5n36w5" path="res://Scripts/line_object.gd" id="1_kkfds"]
 [ext_resource type="Shader" uid="uid://dq40g6msnb14c" path="res://Shaders/line_heat.gdshader" id="1_kteot"]
+[ext_resource type="AudioStream" uid="uid://b3vme6t0crwll" path="res://Sonidos/rock-sliding.mp3" id="3_wjafc"]
+[ext_resource type="AudioStream" uid="uid://dhdkwjbnkfe4o" path="res://Sonidos/Estrellitas07.mp3" id="4_wjafc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kteot"]
 shader = ExtResource("1_kteot")
 shader_parameter/age = 0.0
 
 [sub_resource type="Gradient" id="Gradient_kkfds"]
-offsets = PackedFloat32Array(0, 0.8333333)
 colors = PackedColorArray(1, 1, 1, 0, 18.892157, 18.892157, 18.892157, 1)
 
 [node name="LineObject" type="Node2D"]
@@ -24,3 +25,13 @@ begin_cap_mode = 2
 end_cap_mode = 2
 round_precision = 32
 antialiased = true
+
+[node name="BrushSound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wjafc")
+volume_db = -25.0
+parameters/looping = true
+
+[node name="BrushSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wjafc")
+volume_db = -9.369
+parameters/looping = true

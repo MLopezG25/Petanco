@@ -1,14 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://bwjx0hrdcjlfo"]
+[gd_scene load_steps=15 format=3 uid="uid://bwjx0hrdcjlfo"]
 
 [ext_resource type="Script" uid="uid://1p5iv4qqy860" path="res://Scripts/main.gd" id="1_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://d3wbe6mtx5t6v" path="res://Escenas/player.tscn" id="1_glv2v"]
-[ext_resource type="AudioStream" uid="uid://l4c6mgqsrdr" path="res://Sonidos/file_example_MP3_700KB.mp3" id="2_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://cugfejv6pnkpl" path="res://Escenas/line_object.tscn" id="4_cm0pq"]
-[ext_resource type="PackedScene" uid="uid://dmlbqdh7dqe1e" path="res://Escenas/lluvia.tscn" id="6_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://evqgubpio2x" path="res://Escenas/slingshot.tscn" id="6_lgr22"]
 [ext_resource type="Texture2D" uid="uid://dp6s1o3lrfkfi" path="res://Assets/sky-clouds-background.jpg" id="6_r8q0l"]
 [ext_resource type="Texture2D" uid="uid://6twpjqlvn75n" path="res://Assets/serey-kim-xjrvTc52xYc-unsplash.jpg" id="7_a5a2i"]
 [ext_resource type="Texture2D" uid="uid://du4rhe286qucm" path="res://Assets/16965501405_230bee5a62_o.jpg" id="8_3ihj5"]
+[ext_resource type="AudioStream" uid="uid://d10bevgo02y3w" path="res://Música/break lofi.ogg" id="9_a5a2i"]
+[ext_resource type="Shader" uid="uid://coet10o5kmj60" path="res://Escenas/tiempo.gdshader" id="10_3ihj5"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a5a2i"]
 polygon = PackedVector2Array(-3696, -211, -3428, -196, -3246, -267, -3014, -186, -2726, -160, -2160, -64, -2215, -358, -2114, -676, -1993, -782, -1907, -317, -1846, -241, -1760, -514, -1619, -504, -1386, -282, -1417, -95, -1108, -115, -866, -150, -684, -120, -335, -231, -32, -231, 79, -236, 297, -262, 428, -1369, 610, -1374, 726, -914, 691, -145, 969, -100, 994, -272, 1191, -257, 1196, -105, 1318, -155, 1404, -363, 1570, -393, 1692, -337, 1737, -196, 1859, -140, 1843, 67, 1904, 62, 1939, -100, 1950, -236, 2076, -251, 2182, -135, 2207, 82, 2273, 87, 2465, 97, 2581, 123, 2662, 123, 2829, -29, 2915, -24, 3011, 72, 3142, 37, 3249, 214, 3365, 178, 3456, 203, 3557, 239, 3612, 168, 3668, 254, 3749, 229, 3729, 360, 3749, 426, 3789, 476, 3850, 492, 3865, 492, 3845, 1523, -3969, 1477, -3858, 1427, -3858, 1427, -3868, -115, -3767, -181)
@@ -21,8 +21,19 @@ glow_bloom = 1.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a5a2i"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a5a2i"]
+blend_mode = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8fxbh"]
+shader = ExtResource("10_3ihj5")
+shader_parameter/tiempo = 0.0
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_cm0pq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Letras físicas" type="Node2D" parent="."]
 
 [node name="LineContainer" type="Node2D" parent="."]
 
@@ -36,25 +47,16 @@ script = ExtResource("1_cm0pq")
 
 [node name="Slingshot" parent="SlingContainer" instance=ExtResource("6_lgr22")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_uu6xs")
-volume_db = -4.862
-pitch_scale = 1.4
-max_distance = 99999.0
-
 [node name="Player" parent="." instance=ExtResource("1_glv2v")]
 modulate = Color(1, 0.826, 0.42000002, 1)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(-104, -20)
 texture = ExtResource("6_r8q0l")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(501, 5393)
+position = Vector2(0, 5393)
 texture = ExtResource("7_a5a2i")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D2"]
@@ -64,18 +66,44 @@ occluder = SubResource("OccluderPolygon2D_a5a2i")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(-94.75, 2554.25)
+position = Vector2(0, 2527)
 scale = Vector2(1.1489074, 0.99533755)
 texture = ExtResource("8_3ihj5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fos0i")
 
-[node name="Lluvia" parent="." instance=ExtResource("6_3dxm6")]
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_a5a2i")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-visible = false
+position = Vector2(-519, 27)
 polygon = PackedVector2Array(-3310, 5211, -2879, 5177, -2476, 5076, -2126, 5170, -1884, 5399, -1756, 5372, -1635, 4787, -1494, 4672, -1191, 4753, -1211, 5029, -1016, 4888, -922, 5345, -619, 5412, -451, 5278, -316, 5157, 202, 5197, 269, 5271, 605, 5170, 787, 5143, 942, 4417, 948, 4074, 1157, 3966, 1211, 4571, 1379, 5271, 1608, 5083, 1796, 5069, 2180, 5042, 2348, 5177, 2482, 5237, 2583, 5204, 2758, 5399, 3041, 5581, 3317, 5359, 3485, 5305, 3660, 5513, 3888, 5581, 4131, 5614, 4231, 5641, 4359, 5816, 4305, 6455, 1964, 6482, -1877, 6469, -3021, 6334, -3593, 5930, -3519, 4968)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VelocidadLabel" type="Label" parent="CanvasLayer"]
+material = SubResource("CanvasItemMaterial_a5a2i")
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 23.0
+grow_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="TiempoLabel" type="Label" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_8fxbh")
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 11.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 24
+metadata/_edit_use_anchors_ = true
+
+[node name="Música" type="Node2D" parent="."]
+
+[node name="Rhode" type="AudioStreamPlayer" parent="Música"]
+stream = ExtResource("9_a5a2i")
+volume_db = -13.685
+parameters/looping = true
