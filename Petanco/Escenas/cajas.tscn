@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://cke0brxd26b0k"]
+
+[ext_resource type="Texture2D" uid="uid://csoulh6ov7l82" path="res://icon.svg" id="2_8ys6d"]
+
+[sub_resource type="GDScript" id="GDScript_sml1w"]
+script/source = "extends RigidBody2D
+
+@export var break_force: float = 500.0
+var destroyed: bool = false
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if destroyed:
+		return
+	for i in range(state.get_contact_count()):
+		var impulse = state.get_contact_impulse(i)
+		if impulse.length() > break_force:
+			_break()
+			break
+
+func _break() -> void:
+	destroyed = true
+	queue_free()
+	get_tree().call_group(\"Score\", \"add_points\", 10)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcqmn"]
+size = Vector2(122, 124)
+
+[node name="Caja" type="RigidBody2D"]
+script = SubResource("GDScript_sml1w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rcqmn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8ys6d")

@@ -7,7 +7,7 @@ extends Node2D
 @onready var sling_container: Node2D = $SlingContainer
 @onready var velocidad_label: Label = $CanvasLayer/VelocidadLabel
 @onready var tiempo_label: Label = $CanvasLayer/TiempoLabel
-
+var active_lines: int = 0
 var rain_count: int = 0
 var LineScene = preload("res://Escenas/line_object.tscn")
 var SlingScene = preload("res://Escenas/slingshot.tscn")

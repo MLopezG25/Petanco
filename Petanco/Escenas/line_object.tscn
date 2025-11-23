@@ -29,9 +29,11 @@ antialiased = true
 [node name="BrushSound1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_wjafc")
 volume_db = -25.0
+bus = &"Efectos"
 parameters/looping = true
 
 [node name="BrushSound2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_wjafc")
 volume_db = -9.369
+bus = &"Efectos"
 parameters/looping = true

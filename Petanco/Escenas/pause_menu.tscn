@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://cf7q48gowcm7u"]
+
+[ext_resource type="Script" uid="uid://c6ya5msph80rw" path="res://Scripts/pause_menu.gd" id="1_cr0pj"]
+[ext_resource type="Texture2D" uid="uid://dwyv15hgguwaw" path="res://Assets/Frame of The Feast of Bacchus-Photoroom.png" id="2_8i4rq"]
+[ext_resource type="AudioStream" uid="uid://xqmwm3r41vaw" path="res://Sonidos/Brown Noise (1).mp3" id="3_inj7e"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cr0pj"]
+texture = ExtResource("2_8i4rq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8i4rq"]
+bg_color = Color(1, 1, 1, 0.78431374)
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_inj7e"]
+bg_color = Color(1, 1, 1, 0.78431374)
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvfi7"]
+bg_color = Color(1, 1, 1, 0.78431374)
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_cr0pj")
+
+[node name="Panel" type="Panel" parent="."]
+process_mode = 3
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_cr0pj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -102.0
+offset_right = 75.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Reanudar" type="Button" parent="Panel/VBoxContainer"]
+z_index = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_8i4rq")
+text = "Reanudar"
+vertical_icon_alignment = 0
+
+[node name="Reiniciar" type="Button" parent="Panel/VBoxContainer"]
+z_index = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_inj7e")
+text = "Reiniciar"
+vertical_icon_alignment = 0
+
+[node name="Salir al menú" type="Button" parent="Panel/VBoxContainer"]
+z_index = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_hvfi7")
+text = "Salir al menú"
+vertical_icon_alignment = 0
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="Panel"]
+z_index = -1
+amount = 300
+lifetime = 10.0
+preprocess = 0.28
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(1920, 1080)
+gravity = Vector2(50, 50)
+linear_accel_max = 20.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+
+[node name="SonidoMenú" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_inj7e")
+volume_db = -15.0
+autoplay = true
+parameters/looping = false
+
+[connection signal="pressed" from="Panel/VBoxContainer/Reanudar" to="." method="_on_reanudar_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Reiniciar" to="." method="_on_reiniciar_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Salir al menú" to="." method="_on_salir_al_menú_pressed"]

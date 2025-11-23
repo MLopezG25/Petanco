@@ -1,25 +1,34 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwjx0hrdcjlfo"]
+[gd_scene load_steps=26 format=3 uid="uid://bwjx0hrdcjlfo"]
 
-[ext_resource type="Script" uid="uid://1p5iv4qqy860" path="res://Scripts/main.gd" id="1_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://d3wbe6mtx5t6v" path="res://Escenas/player.tscn" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://1p5iv4qqy860" path="res://Scripts/main.gd" id="1_t36bp"]
+[ext_resource type="PackedScene" uid="uid://bhxrw30734oyt" path="res://Escenas/suelo.tscn" id="2_i2xo1"]
 [ext_resource type="PackedScene" uid="uid://cugfejv6pnkpl" path="res://Escenas/line_object.tscn" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://evqgubpio2x" path="res://Escenas/slingshot.tscn" id="6_lgr22"]
 [ext_resource type="Texture2D" uid="uid://dp6s1o3lrfkfi" path="res://Assets/sky-clouds-background.jpg" id="6_r8q0l"]
 [ext_resource type="Texture2D" uid="uid://6twpjqlvn75n" path="res://Assets/serey-kim-xjrvTc52xYc-unsplash.jpg" id="7_a5a2i"]
-[ext_resource type="Texture2D" uid="uid://du4rhe286qucm" path="res://Assets/16965501405_230bee5a62_o.jpg" id="8_3ihj5"]
 [ext_resource type="AudioStream" uid="uid://d10bevgo02y3w" path="res://Música/break lofi.ogg" id="9_a5a2i"]
+[ext_resource type="AudioStream" uid="uid://6jv10yf68iu8" path="res://Música/hype williams - mitsubishi.mp3" id="9_fhaj2"]
+[ext_resource type="AudioStream" uid="uid://bw0bo0qxud7wu" path="res://Música/NEU! - Hallogallo.mp3" id="10_1wrdp"]
 [ext_resource type="Shader" uid="uid://coet10o5kmj60" path="res://Escenas/tiempo.gdshader" id="10_3ihj5"]
+[ext_resource type="AudioStream" uid="uid://chhddx8xdgih5" path="res://Música/Peace and Love Dub.mp3" id="11_dj7fj"]
+[ext_resource type="Texture2D" uid="uid://d0trtk7pj7wuk" path="res://Assets/Pietro_Paolini_-_Achilles_among_the_Daughters_of_Lycomedes_-_78.PA.363_-_J._Paul_Getty_Museum.jpg" id="12_2e8qy"]
+[ext_resource type="Texture2D" uid="uid://du5xeo1lw3vp3" path="res://Assets/Giovanni_Bellini_—_Holy_Allegory.jpg" id="13_dc6jj"]
+[ext_resource type="PackedScene" uid="uid://cf7q48gowcm7u" path="res://Escenas/pause_menu.tscn" id="13_ig2kn"]
+[ext_resource type="Texture2D" uid="uid://wwh6nxidortd" path="res://Assets/31_172_cropped.jpeg" id="14_fhaj2"]
+[ext_resource type="Script" uid="uid://g6is7btrvxc2" path="res://Scripts/checkpoint_1.gd" id="14_t36bp"]
+[ext_resource type="PackedScene" uid="uid://cnc7wfhonof3j" path="res://Escenas/tormenta.tscn" id="18_fhaj2"]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a5a2i"]
-polygon = PackedVector2Array(-3696, -211, -3428, -196, -3246, -267, -3014, -186, -2726, -160, -2160, -64, -2215, -358, -2114, -676, -1993, -782, -1907, -317, -1846, -241, -1760, -514, -1619, -504, -1386, -282, -1417, -95, -1108, -115, -866, -150, -684, -120, -335, -231, -32, -231, 79, -236, 297, -262, 428, -1369, 610, -1374, 726, -914, 691, -145, 969, -100, 994, -272, 1191, -257, 1196, -105, 1318, -155, 1404, -363, 1570, -393, 1692, -337, 1737, -196, 1859, -140, 1843, 67, 1904, 62, 1939, -100, 1950, -236, 2076, -251, 2182, -135, 2207, 82, 2273, 87, 2465, 97, 2581, 123, 2662, 123, 2829, -29, 2915, -24, 3011, 72, 3142, 37, 3249, 214, 3365, 178, 3456, 203, 3557, 239, 3612, 168, 3668, 254, 3749, 229, 3729, 360, 3749, 426, 3789, 476, 3850, 492, 3865, 492, 3845, 1523, -3969, 1477, -3858, 1427, -3858, 1427, -3868, -115, -3767, -181)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t36bp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig2kn"]
+size = Vector2(122, 124)
 
 [sub_resource type="Environment" id="Environment_fos0i"]
 background_mode = 3
 glow_enabled = true
 glow_normalized = true
 glow_bloom = 1.0
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a5a2i"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a5a2i"]
 blend_mode = 1
@@ -28,12 +37,21 @@ blend_mode = 1
 shader = ExtResource("10_3ihj5")
 shader_parameter/tiempo = 0.0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a5a2i"]
+polygon = PackedVector2Array(-3696, -211, -3428, -196, -3246, -267, -3014, -186, -2726, -160, -2160, -64, -2215, -358, -2114, -676, -1993, -782, -1907, -317, -1846, -241, -1760, -514, -1619, -504, -1386, -282, -1417, -95, -1108, -115, -866, -150, -684, -120, -335, -231, -32, -231, 79, -236, 297, -262, 428, -1369, 610, -1374, 726, -914, 691, -145, 969, -100, 994, -272, 1191, -257, 1196, -105, 1318, -155, 1404, -363, 1570, -393, 1692, -337, 1737, -196, 1859, -140, 1843, 67, 1904, 62, 1939, -100, 1950, -236, 2076, -251, 2182, -135, 2207, 82, 2273, 87, 2465, 97, 2581, 123, 2662, 123, 2829, -29, 2915, -24, 3011, 72, 3142, 37, 3249, 214, 3365, 178, 3456, 203, 3557, 239, 3612, 168, 3668, 254, 3749, 229, 3729, 360, 3749, 426, 3789, 476, 3850, 492, 3865, 492, 3845, 1523, -3969, 1477, -3858, 1427, -3858, 1427, -3868, -115, -3767, -181)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t36bp"]
+size = Vector2(100, 200)
+
 [node name="Main" type="Node2D"]
-script = ExtResource("1_cm0pq")
+script = ExtResource("1_t36bp")
+
+[node name="Suelo" parent="." instance=ExtResource("2_i2xo1")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-37, 496)
 
-[node name="Letras físicas" type="Node2D" parent="."]
+[node name="PauseMenu" parent="." instance=ExtResource("13_ig2kn")]
 
 [node name="LineContainer" type="Node2D" parent="."]
 
@@ -41,7 +59,11 @@ script = ExtResource("1_cm0pq")
 
 [node name="CollisionContainer" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="CollisionContainer"]
+[node name="RigidBody2D" type="RigidBody2D" parent="CollisionContainer"]
+physics_material_override = SubResource("PhysicsMaterial_t36bp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionContainer/RigidBody2D"]
+shape = SubResource("RectangleShape2D_ig2kn")
 
 [node name="SlingContainer" type="Node2D" parent="."]
 
@@ -50,35 +72,8 @@ script = ExtResource("1_cm0pq")
 [node name="Player" parent="." instance=ExtResource("1_glv2v")]
 modulate = Color(1, 0.826, 0.42000002, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
-texture = ExtResource("6_r8q0l")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(0, 5393)
-texture = ExtResource("7_a5a2i")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D2"]
-position = Vector2(-6.1035156e-05, -0.00048828125)
-scale = Vector2(0.99999994, 0.99999994)
-occluder = SubResource("OccluderPolygon2D_a5a2i")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(0, 2527)
-scale = Vector2(1.1489074, 0.99533755)
-texture = ExtResource("8_3ihj5")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fos0i")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-physics_material_override = SubResource("PhysicsMaterial_a5a2i")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(-519, 27)
-polygon = PackedVector2Array(-3310, 5211, -2879, 5177, -2476, 5076, -2126, 5170, -1884, 5399, -1756, 5372, -1635, 4787, -1494, 4672, -1191, 4753, -1211, 5029, -1016, 4888, -922, 5345, -619, 5412, -451, 5278, -316, 5157, 202, 5197, 269, 5271, 605, 5170, 787, 5143, 942, 4417, 948, 4074, 1157, 3966, 1211, 4571, 1379, 5271, 1608, 5083, 1796, 5069, 2180, 5042, 2348, 5177, 2482, 5237, 2583, 5204, 2758, 5399, 3041, 5581, 3317, 5359, 3485, 5305, 3660, 5513, 3888, 5581, 4131, 5614, 4231, 5641, 4359, 5816, 4305, 6455, 1964, 6482, -1877, 6469, -3021, 6334, -3593, 5930, -3519, 4968)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -106,4 +101,98 @@ metadata/_edit_use_anchors_ = true
 [node name="Rhode" type="AudioStreamPlayer" parent="Música"]
 stream = ExtResource("9_a5a2i")
 volume_db = -13.685
+bus = &"Música"
 parameters/looping = true
+
+[node name="Mitsubishi" type="AudioStreamPlayer" parent="Música"]
+stream = ExtResource("9_fhaj2")
+volume_db = -10.0
+autoplay = true
+bus = &"Música"
+parameters/looping = true
+
+[node name="NEU" type="AudioStreamPlayer" parent="Música"]
+stream = ExtResource("10_1wrdp")
+volume_db = -13.685
+bus = &"Música"
+parameters/looping = true
+
+[node name="Dub" type="AudioStreamPlayer" parent="Música"]
+stream = ExtResource("11_dj7fj")
+volume_db = -13.685
+bus = &"Música"
+parameters/looping = true
+
+[node name="Fondo" type="Node2D" parent="."]
+
+[node name="Cielo" type="Sprite2D" parent="Fondo"]
+z_index = -1
+texture = ExtResource("6_r8q0l")
+
+[node name="Cielo2" type="Sprite2D" parent="Fondo"]
+z_index = -1
+position = Vector2(5589, 0)
+texture = ExtResource("6_r8q0l")
+flip_h = true
+
+[node name="Cielo3" type="Sprite2D" parent="Fondo"]
+z_index = -1
+position = Vector2(11178, 0)
+texture = ExtResource("6_r8q0l")
+
+[node name="Paolini" type="Sprite2D" parent="Fondo"]
+z_index = -1
+position = Vector2(15493, 508)
+texture = ExtResource("12_2e8qy")
+
+[node name="grupo" type="Sprite2D" parent="Fondo"]
+z_index = -1
+position = Vector2(18181, 484)
+texture = ExtResource("13_dc6jj")
+
+[node name="Fábrica" type="Sprite2D" parent="Fondo"]
+z_index = -1
+position = Vector2(20583, 208)
+texture = ExtResource("14_fhaj2")
+
+[node name="ciudad" type="Sprite2D" parent="Fondo"]
+z_index = -1
+position = Vector2(0, 5393)
+texture = ExtResource("7_a5a2i")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Fondo/ciudad"]
+position = Vector2(-6.1035156e-05, -0.00048828125)
+scale = Vector2(0.99999994, 0.99999994)
+occluder = SubResource("OccluderPolygon2D_a5a2i")
+
+[node name="Checkpoint1" type="Area2D" parent="."]
+position = Vector2(-330, 33)
+script = ExtResource("14_t36bp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint1"]
+position = Vector2(330, -33)
+shape = SubResource("RectangleShape2D_t36bp")
+
+[node name="Checkpoint2" type="Area2D" parent="."]
+position = Vector2(1372, -129)
+script = ExtResource("14_t36bp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint2"]
+shape = SubResource("RectangleShape2D_t36bp")
+
+[node name="Checkpoint3" type="Area2D" parent="."]
+position = Vector2(4671, -420)
+script = ExtResource("14_t36bp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint3"]
+position = Vector2(-12, -4)
+shape = SubResource("RectangleShape2D_t36bp")
+
+[node name="Enemigos" type="Node" parent="."]
+
+[node name="Tormenta" parent="Enemigos" instance=ExtResource("18_fhaj2")]
+position = Vector2(-400, 0)
+
+[connection signal="body_entered" from="Checkpoint1" to="Checkpoint1" method="_on_body_entered"]
+[connection signal="body_entered" from="Checkpoint2" to="Checkpoint2" method="_on_body_entered"]
+[connection signal="body_entered" from="Checkpoint3" to="Checkpoint3" method="_on_body_entered"]

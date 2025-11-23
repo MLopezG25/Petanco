@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3wbe6mtx5t6v"]
+[gd_scene load_steps=5 format=3 uid="uid://d3wbe6mtx5t6v"]
 
 [ext_resource type="Script" uid="uid://b73454ygwtuwn" path="res://Scripts/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://bidfxyp6gkkm2" path="res://Escenas/fuego.tscn" id="2_onrkg"]
-[ext_resource type="PackedScene" uid="uid://b23war43ggmhi" path="res://Escenas/explosion.tscn" id="3_i3pqv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sh265"]
 bounce = 0.4
@@ -25,4 +24,4 @@ shape = SubResource("CircleShape2D_sh265")
 
 [node name="Fuego" parent="." instance=ExtResource("2_onrkg")]
 
-[node name="Explosion" parent="." instance=ExtResource("3_i3pqv")]
+[node name="Camera2D" type="Camera2D" parent="."]

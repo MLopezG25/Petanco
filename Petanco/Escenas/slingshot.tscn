@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://evqgubpio2x"]
+[gd_scene load_steps=3 format=3 uid="uid://evqgubpio2x"]
 
 [ext_resource type="Script" uid="uid://cng1vmagob0x7" path="res://Scripts/slingshot.gd" id="1_xykh3"]
+[ext_resource type="AudioStream" uid="uid://4bexjr53ulgi" path="res://Sonidos/stone-debris-109593.mp3" id="2_k52da"]
 
 [node name="Slingshot" type="Node2D"]
 script = ExtResource("1_xykh3")
@@ -12,3 +13,6 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_k52da")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bw0bo0qxud7wu"
+path="res://.godot/imported/NEU! - Hallogallo.mp3-37240b8f0bf4a214a1124f74c29e30df.mp3str"
+
+[deps]
+
+source_file="res://Música/NEU! - Hallogallo.mp3"
+dest_files=["res://.godot/imported/NEU! - Hallogallo.mp3-37240b8f0bf4a214a1124f74c29e30df.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
