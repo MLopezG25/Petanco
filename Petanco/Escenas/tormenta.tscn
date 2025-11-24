@@ -39,7 +39,7 @@ curve_z = SubResource("Curve_dm7ce")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6ciyq"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(0, 100, 0)
+emission_box_extents = Vector3(0, 300, 0)
 spread = 0.0
 initial_velocity_min = 637.75
 initial_velocity_max = 663.62
@@ -65,8 +65,10 @@ script = ExtResource("1_2hurm")
 [node name="Lluvia" type="GPUParticles2D" parent="."]
 rotation = 1.5707964
 scale = Vector2(1.682685, 3.3943279)
-amount = 500
+amount = 2000
+lifetime = 4.0
 randomness = 1.0
+visibility_rect = Rect2(-100, -1000, 2000, 2000)
 trail_sections = 2
 trail_section_subdivisions = 1
 process_material = SubResource("ParticleProcessMaterial_6ciyq")
@@ -78,3 +80,5 @@ material = SubResource("CanvasItemMaterial_408tv")
 stream = ExtResource("1_sbj41")
 autoplay = true
 parameters/looping = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

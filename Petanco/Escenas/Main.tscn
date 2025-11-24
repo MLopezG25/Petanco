@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bwjx0hrdcjlfo"]
+[gd_scene load_steps=31 format=3 uid="uid://bwjx0hrdcjlfo"]
 
 [ext_resource type="PackedScene" uid="uid://d3wbe6mtx5t6v" path="res://Escenas/player.tscn" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://1p5iv4qqy860" path="res://Scripts/main.gd" id="1_t36bp"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cf7q48gowcm7u" path="res://Escenas/pause_menu.tscn" id="13_ig2kn"]
 [ext_resource type="Texture2D" uid="uid://wwh6nxidortd" path="res://Assets/31_172_cropped.jpeg" id="14_fhaj2"]
 [ext_resource type="Script" uid="uid://g6is7btrvxc2" path="res://Scripts/checkpoint_1.gd" id="14_t36bp"]
+[ext_resource type="Texture2D" uid="uid://bv5bmes2k35gk" path="res://Assets/SUELO.png" id="16_1wrdp"]
 [ext_resource type="PackedScene" uid="uid://cnc7wfhonof3j" path="res://Escenas/tormenta.tscn" id="18_fhaj2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t36bp"]
@@ -40,8 +41,19 @@ shader_parameter/tiempo = 0.0
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a5a2i"]
 polygon = PackedVector2Array(-3696, -211, -3428, -196, -3246, -267, -3014, -186, -2726, -160, -2160, -64, -2215, -358, -2114, -676, -1993, -782, -1907, -317, -1846, -241, -1760, -514, -1619, -504, -1386, -282, -1417, -95, -1108, -115, -866, -150, -684, -120, -335, -231, -32, -231, 79, -236, 297, -262, 428, -1369, 610, -1374, 726, -914, 691, -145, 969, -100, 994, -272, 1191, -257, 1196, -105, 1318, -155, 1404, -363, 1570, -393, 1692, -337, 1737, -196, 1859, -140, 1843, 67, 1904, 62, 1939, -100, 1950, -236, 2076, -251, 2182, -135, 2207, 82, 2273, 87, 2465, 97, 2581, 123, 2662, 123, 2829, -29, 2915, -24, 3011, 72, 3142, 37, 3249, 214, 3365, 178, 3456, 203, 3557, 239, 3612, 168, 3668, 254, 3749, 229, 3729, 360, 3749, 426, 3789, 476, 3850, 492, 3865, 492, 3845, 1523, -3969, 1477, -3858, 1427, -3858, 1427, -3868, -115, -3767, -181)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1wrdp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dj7fj"]
+size = Vector2(10000, 1139.9985)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhaj2"]
+size = Vector2(20, 204.06781)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wrdp"]
+size = Vector2(36.664642, 59.93377)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t36bp"]
-size = Vector2(100, 200)
+size = Vector2(182, 2354)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_t36bp")
@@ -50,6 +62,8 @@ script = ExtResource("1_t36bp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-37, 496)
+limit_left = -3485
+limit_bottom = 1875
 
 [node name="PauseMenu" parent="." instance=ExtResource("13_ig2kn")]
 
@@ -71,6 +85,7 @@ shape = SubResource("RectangleShape2D_ig2kn")
 
 [node name="Player" parent="." instance=ExtResource("1_glv2v")]
 modulate = Color(1, 0.826, 0.42000002, 1)
+position = Vector2(-288, 1043)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fos0i")
@@ -140,19 +155,28 @@ z_index = -1
 position = Vector2(11178, 0)
 texture = ExtResource("6_r8q0l")
 
+[node name="Cielo4" type="Sprite2D" parent="Fondo"]
+z_index = -1
+position = Vector2(16767, 0)
+texture = ExtResource("6_r8q0l")
+flip_h = true
+
 [node name="Paolini" type="Sprite2D" parent="Fondo"]
 z_index = -1
-position = Vector2(15493, 508)
+position = Vector2(6333.0005, -435.00003)
+scale = Vector2(0.57812464, 0.6155405)
 texture = ExtResource("12_2e8qy")
 
 [node name="grupo" type="Sprite2D" parent="Fondo"]
 z_index = -1
-position = Vector2(18181, 484)
+position = Vector2(10828, -505.5)
+scale = Vector2(0.553125, 0.5320681)
 texture = ExtResource("13_dc6jj")
 
 [node name="Fábrica" type="Sprite2D" parent="Fondo"]
 z_index = -1
-position = Vector2(20583, 208)
+position = Vector2(14156.5, -561.37396)
+scale = Vector2(0.54260355, 0.54260355)
 texture = ExtResource("14_fhaj2")
 
 [node name="ciudad" type="Sprite2D" parent="Fondo"]
@@ -165,33 +189,92 @@ position = Vector2(-6.1035156e-05, -0.00048828125)
 scale = Vector2(0.99999994, 0.99999994)
 occluder = SubResource("OccluderPolygon2D_a5a2i")
 
+[node name="Suelo" type="StaticBody2D" parent="Fondo"]
+position = Vector2(-1, -1)
+physics_material_override = SubResource("PhysicsMaterial_1wrdp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fondo/Suelo"]
+position = Vector2(3750, 1534.9999)
+scale = Vector2(1.3199987, 0.6000006)
+shape = SubResource("RectangleShape2D_dj7fj")
+
+[node name="suelo" type="Sprite2D" parent="Fondo/Suelo"]
+z_index = -1
+position = Vector2(3750, 1534)
+scale = Vector2(2, 2)
+texture = ExtResource("16_1wrdp")
+
+[node name="Suelo2" type="StaticBody2D" parent="Fondo"]
+position = Vector2(-1601, -8410)
+rotation = 1.5707964
+physics_material_override = SubResource("PhysicsMaterial_1wrdp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fondo/Suelo2"]
+position = Vector2(3750, 1534.9999)
+scale = Vector2(1.3199987, 0.6000006)
+shape = SubResource("RectangleShape2D_dj7fj")
+
+[node name="suelo" type="Sprite2D" parent="Fondo/Suelo2"]
+z_index = -1
+position = Vector2(3750, 1534)
+scale = Vector2(2, 2)
+texture = ExtResource("16_1wrdp")
+
+[node name="Suelo3" type="StaticBody2D" parent="Fondo"]
+position = Vector2(-2, -3069)
+physics_material_override = SubResource("PhysicsMaterial_1wrdp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fondo/Suelo3"]
+position = Vector2(3750, 1534.9999)
+scale = Vector2(1.3199987, 0.6000006)
+shape = SubResource("RectangleShape2D_dj7fj")
+
+[node name="suelo" type="Sprite2D" parent="Fondo/Suelo3"]
+z_index = -1
+position = Vector2(3750, 1534)
+scale = Vector2(2, 2)
+texture = ExtResource("16_1wrdp")
+flip_h = true
+
 [node name="Checkpoint1" type="Area2D" parent="."]
 position = Vector2(-330, 33)
 script = ExtResource("14_t36bp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint1"]
-position = Vector2(330, -33)
-shape = SubResource("RectangleShape2D_t36bp")
+position = Vector2(330, -17.000061)
+scale = Vector2(14.08, 11.8)
+shape = SubResource("RectangleShape2D_fhaj2")
 
 [node name="Checkpoint2" type="Area2D" parent="."]
 position = Vector2(1372, -129)
 script = ExtResource("14_t36bp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint2"]
-shape = SubResource("RectangleShape2D_t36bp")
+position = Vector2(1384.5647, 111.50006)
+scale = Vector2(5.8129454, 39.293377)
+shape = SubResource("RectangleShape2D_1wrdp")
 
 [node name="Checkpoint3" type="Area2D" parent="."]
 position = Vector2(4671, -420)
 script = ExtResource("14_t36bp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint3"]
-position = Vector2(-12, -4)
+position = Vector2(-53, 416.00006)
 shape = SubResource("RectangleShape2D_t36bp")
 
 [node name="Enemigos" type="Node" parent="."]
 
 [node name="Tormenta" parent="Enemigos" instance=ExtResource("18_fhaj2")]
-position = Vector2(-400, 0)
+position = Vector2(-1991, -1193)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -560.0
+offset_top = 874.0
+offset_right = -4.0
+offset_bottom = 929.0
+theme_override_font_sizes/font_size = 40
+text = "Escapa de la tormenta tóxica"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="Checkpoint1" to="Checkpoint1" method="_on_body_entered"]
 [connection signal="body_entered" from="Checkpoint2" to="Checkpoint2" method="_on_body_entered"]

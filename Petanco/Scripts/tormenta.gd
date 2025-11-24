@@ -4,7 +4,7 @@ extends Area2D
 @onready var collider: CollisionShape2D = $CollisionShape2D
 @onready var rain_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
-var last_position: Vector2 = Vector2.ZERO   # CAMBIO: guardamos última posición válida
+var last_position: Vector2 = Vector2.ZERO   
 
 func _ready():
 	rain_sound.play()

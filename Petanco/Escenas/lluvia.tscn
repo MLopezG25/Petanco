@@ -63,7 +63,7 @@ script = ExtResource("1_a5il0")
 [node name="Lluvia" type="GPUParticles2D" parent="."]
 rotation = 1.5707964
 scale = Vector2(1.682685, 3.3943279)
-amount = 1000
+amount = 100
 lifetime = 2.0
 randomness = 1.0
 trail_sections = 2

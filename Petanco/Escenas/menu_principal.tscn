@@ -1,10 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://cl5qbpy42rt3x"]
+[gd_scene load_steps=13 format=3 uid="uid://cl5qbpy42rt3x"]
 
 [ext_resource type="Script" uid="uid://i1045h1xeycg" path="res://Scripts/menu_principal.gd" id="1_xv3xs"]
 [ext_resource type="AudioStream" uid="uid://bo3jp6l6uhnrd" path="res://Sonidos/Louis Therouxs Weird Weekend.mp3" id="2_ft1ng"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ft1ng"]
-bg_color = Color(0, 0, 0, 0.5647059)
+bg_color = Color(1, 1, 1, 0.78431374)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qncgo"]
+bg_color = Color(1, 1, 1, 0.78431374)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bmgc8"]
+bg_color = Color(1, 1, 1, 0.78431374)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8lex"]
+bg_color = Color(1, 1, 1, 0.78431374)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yo4kt"]
+bg_color = Color(1, 1, 1, 0.78431374)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15krf"]
+bg_color = Color(1, 1, 1, 0.78431374)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2d8q"]
+bg_color = Color(1, 1, 1, 0.78431374)
 
 [sub_resource type="Gradient" id="Gradient_xv3xs"]
 colors = PackedColorArray(0.40625, 0.9304199, 1, 1, 1, 0.7578125, 0.97578114, 1)
@@ -12,6 +30,9 @@ colors = PackedColorArray(0.40625, 0.9304199, 1, 1, 1, 0.7578125, 0.97578114, 1)
 [sub_resource type="Gradient" id="Gradient_ft1ng"]
 offsets = PackedFloat32Array(0, 0.62457335, 1)
 colors = PackedColorArray(1, 0.2890625, 0.9389038, 1, 0.79, 0.15010001, 0.15010001, 1, 0.078125, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opkeq"]
+bg_color = Color(1, 1, 1, 0.78431374)
 
 [node name="MenuPrincipal" type="Control"]
 layout_mode = 3
@@ -33,10 +54,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -61.0
-offset_top = -79.0
-offset_right = 19.0
-offset_bottom = 49.0
+offset_left = -96.0
+offset_top = -161.0
+offset_right = 54.0
+offset_bottom = 102.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -45,18 +66,27 @@ layout_mode = 2
 
 [node name="Jugar" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_ft1ng")
 text = "Jugar"
+vertical_icon_alignment = 2
 
 [node name="Opciones" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_qncgo")
 text = "Opciones"
+vertical_icon_alignment = 2
 
 [node name="Salir" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_bmgc8")
 text = "Salir"
+vertical_icon_alignment = 2
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
@@ -68,17 +98,18 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -161.0
-offset_top = 99.0
-offset_right = 122.0
-offset_bottom = 193.0
+offset_left = -288.5
+offset_top = 137.0
+offset_right = 249.5
+offset_bottom = 231.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Ajustes" type="Label" parent="Control/Ajustes"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_ft1ng")
+theme_override_styles/normal = SubResource("StyleBoxFlat_d8lex")
 text = "Ajustes"
 horizontal_alignment = 1
 
@@ -88,7 +119,9 @@ layout_mode = 2
 
 [node name="Música" type="Label" parent="Control/Ajustes/Volumen"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_yo4kt")
 text = "Música"
 
 [node name="MusicaSlider" type="HSlider" parent="Control/Ajustes/Volumen"]
@@ -101,7 +134,9 @@ ticks_on_borders = true
 
 [node name="Volumen Efectos" type="Label" parent="Control/Ajustes/Volumen"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_15krf")
 text = "Efectos"
 
 [node name="EfectosSlider" type="HSlider" parent="Control/Ajustes/Volumen"]
@@ -115,11 +150,13 @@ ticks_on_borders = true
 [node name="Volver" type="Button" parent="Control/Ajustes"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_j2d8q")
 text = "Volver"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -2
 position = Vector2(-975, -599)
 amount = 2000
 lifetime = 20.0
@@ -134,6 +171,7 @@ scale_amount_max = 5.0
 color_ramp = SubResource("Gradient_xv3xs")
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+z_index = -2
 position = Vector2(-900, -501)
 amount = 2000
 lifetime = 10.0
@@ -153,6 +191,27 @@ stream = ExtResource("2_ft1ng")
 volume_db = -10.0
 autoplay = true
 bus = &"Música"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -748.0
+offset_top = -34.0
+offset_right = -298.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_opkeq")
+text = "Click izquierdo mantenido para dibujar"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 290.0
+offset_top = -33.0
+offset_right = 740.0
+offset_bottom = 1.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_opkeq")
+text = "Click derecho para impulsarte"
 
 [connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]

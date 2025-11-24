@@ -83,4 +83,4 @@ respawn={
 
 environment/ssao/quality=3
 viewport/hdr_2d=true
-environment/defaults/default_clear_color=Color(0.92578125, 0.79267687, 0.33631897, 1)
+environment/defaults/default_clear_color=Color(0.9296875, 0.8969242, 0.6282654, 1)
